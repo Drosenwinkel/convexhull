@@ -14,8 +14,8 @@ def addPoint(event):
 	points.append((event.x,event.y))
 
 def drawPoint(canvas,x,y):
-	# r = 4
-	# id = canvas.create_oval(x-r,y-r,x+r,y+r)
+	#r = 4
+	#id = canvas.create_oval(x-r,y-r,x+r,y+r)
 	id = canvas.create_image((x,y),image=ram,state=NORMAL)
 	return id
 

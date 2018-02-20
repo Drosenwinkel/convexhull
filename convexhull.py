@@ -97,6 +97,8 @@ def merge(a,b):
     clockwiseSort(a)
     clockwiseSort(b)
 
+    al=sys.maxsize
+
     a_index = a.index(a_closest_to_L)
     b_index = b.index(b_closest_to_L)
 
@@ -107,11 +109,11 @@ def merge(a,b):
     print(str(b[j]))
 
     # y(i, j+1)
-    y_i_j1= yint(a[i],b[(j - 1) % len(b)],mid_L,0,3000)[1]
+    y_i_j1= yint(a[i],b[(j - 1) % len(b)],mid_L,0,al)[1]
     #y(i,j)
-    y_i_j= yint(a[i],b[j],mid_L,0,3000)[1]
+    y_i_j= yint(a[i],b[j],mid_L,0,al)[1]
     #y(i-1,j)
-    y_1i_j=yint(a[(i + 1) % len(a)],b[j],mid_L,0,3000)[1]
+    y_1i_j=yint(a[(i + 1) % len(a)],b[j],mid_L,0,al)[1]
 
     """
     Initialization:
@@ -134,9 +136,9 @@ def merge(a,b):
             j=(j-1)%len(b)
         else:
             i=(i+1)%len(a)
-        y_i_j1 = yint(a[i], b[(j-1)%len(b)], mid_L, 0, 3000)[1]
-        y_i_j = yint(a[i], b[j], mid_L, 0, 3000)[1]
-        y_1i_j = yint(a[(i + 1) % len(a)], b[j], mid_L, 0, 3000)[1]
+        y_i_j1 = yint(a[i], b[(j-1)%len(b)], mid_L, 0, al)[1]
+        y_i_j = yint(a[i], b[j], mid_L, 0, al)[1]
+        y_1i_j = yint(a[(i + 1) % len(a)], b[j], mid_L, 0, al)[1]
 
 
     lower_bound_a = a[i]
@@ -150,11 +152,11 @@ def merge(a,b):
     j = b_index
 
     # y(i, j+1)
-    y_i_j1 = yint(a[i], b[(j + 1) % len(b)], mid_L, 0, 3000)[1]
+    y_i_j1 = yint(a[i], b[(j + 1) % len(b)], mid_L, 0, al)[1]
     # y(i,j)
-    y_i_j = yint(a[i], b[j], mid_L, 0, 3000)[1]
+    y_i_j = yint(a[i], b[j], mid_L, 0, al)[1]
     # y(i-1,j)
-    y_1i_j = yint(a[(i - 1) % len(a)], b[j], mid_L, 0, 3000)[1]
+    y_1i_j = yint(a[(i - 1) % len(a)], b[j], mid_L, 0, al)[1]
 
     '''
     This loop is the same as the one above except we are traversing down the lists moving in opposite directions.
@@ -167,9 +169,9 @@ def merge(a,b):
         else:
             i = (i - 1) % len(a)
 
-        y_i_j1 = yint(a[i], b[(j + 1) % len(b)], mid_L, 0, 3000)[1]
-        y_i_j = yint(a[i], b[j], mid_L, 0, 3000)[1]
-        y_1i_j = yint(a[(i - 1) % len(a)], b[j], mid_L, 0, 3000)[1]
+        y_i_j1 = yint(a[i], b[(j + 1) % len(b)], mid_L, 0, al)[1]
+        y_i_j = yint(a[i], b[j], mid_L, 0, al)[1]
+        y_1i_j = yint(a[(i - 1) % len(a)], b[j], mid_L, 0, al)[1]
 
 
     upper_bound_a = a[i]
